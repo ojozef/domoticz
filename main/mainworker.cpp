@@ -9905,18 +9905,20 @@ void MainWorker::decode_AirQuality(const CDomoticzHardwareBase* pHardware, const
 		case sTypeVoltcraft:
 			WriteMessage("subtype       = Voltcraft CO-20");
 
-			sprintf(szTmp, "CO2 = %d ppm", pMeter->airquality);
+			sprintf(szTmp, "PM2.5 = %d ug", pMeter->airquality);
 			WriteMessage(szTmp);
-			if (pMeter->airquality < 700)
-				strcpy(szTmp, "Quality = Excellent");
-			else if (pMeter->airquality < 900)
+			if (pMeter->airquality < 13)
 				strcpy(szTmp, "Quality = Good");
-			else if (pMeter->airquality < 1100)
-				strcpy(szTmp, "Quality = Fair");
-			else if (pMeter->airquality < 1600)
-				strcpy(szTmp, "Quality = Mediocre");
+			else if (pMeter->airquality < 35)
+				strcpy(szTmp, "Quality = Moderate");
+			else if (pMeter->airquality < 56)
+				strcpy(szTmp, "Quality = Unhealthy for Sensitive Groups");
+			else if (pMeter->airquality < 151)
+				strcpy(szTmp, "Quality = Unhealthy");
+			else if (pMeter->airquality < 251)
+				strcpy(szTmp, "Quality = Very Unhealthy");
 			else
-				strcpy(szTmp, "Quality = Bad");
+				strcpy(szTmp, "Quality = Hazardous");
 			WriteMessage(szTmp);
 			break;
 		default:
