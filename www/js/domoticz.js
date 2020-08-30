@@ -4742,50 +4742,60 @@ function ShowAirQualityLog(contentdiv, backfunction, id, name) {
 			alternateGridColor: null,
 			plotBands: [{ // Excellent
 				from: 0,
-				to: 700,
+				to: 12,
 				color: 'rgba(68, 170, 213, 0.1)',
-				label: {
-					text: $.t('Excellent'),
-					style: {
-						color: '#CCCCCC'
-					}
-				}
-			}, { // Good
-				from: 700,
-				to: 900,
-				color: 'rgba(68, 170, 213, 0.2)',
 				label: {
 					text: $.t('Good'),
 					style: {
 						color: '#CCCCCC'
 					}
 				}
+			}, { // Good
+				from: 13,
+				to: 34,
+				color: 'rgba(68, 170, 213, 0.2)',
+				label: {
+					text: $.t('Moderate'),
+					style: {
+						color: '#CCCCCC'
+					}
+				}
 			}, { // Fair
-				from: 900,
-				to: 1100,
+				from: 35,
+				to: 55,
 				color: 'rgba(68, 170, 213, 0.1)',
 				label: {
-					text: $.t('Fair'),
+					text: $.t('Unhealthy for Sensitive Groups'),
 					style: {
 						color: '#CCCCCC'
 					}
 				}
 			}, { // Mediocre
-				from: 1100,
-				to: 1600,
+				from: 56,
+				to: 150,
 				color: 'rgba(68, 170, 213, 0.2)',
 				label: {
-					text: $.t('Mediocre'),
+					text: $.t('Unhealthy'),
 					style: {
 						color: '#CCCCCC'
 					}
 				}
 			}, { // Bad
-				from: 1600,
+				from: 150,
+				to: 250,
+				color: 'rgba(68, 170, 213, 0.1)',
+				label: {
+					text: $.t('Very Unhealthy'),
+					style: {
+						color: '#CCCCCC'
+					}
+				}
+			}, { // Hazardous
+				from: 250,
 				to: 6000,
 				color: 'rgba(68, 170, 213, 0.1)',
 				label: {
-					text: $.t('Bad'),
+					text: $.t('Hazardous'),
 					style: {
 						color: '#CCCCCC'
 					}

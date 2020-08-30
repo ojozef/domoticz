@@ -10701,20 +10701,22 @@ namespace http {
 					{
 						if (bHaveTimeout)
 							nValue = 0;
-						sprintf(szTmp, "%d ppm", nValue);
+						sprintf(szTmp, "%d ug", nValue);
 						root["result"][ii]["Data"] = szTmp;
 						root["result"][ii]["HaveTimeout"] = bHaveTimeout;
 						int airquality = nValue;
-						if (airquality < 700)
-							root["result"][ii]["Quality"] = "Excellent";
-						else if (airquality < 900)
+						if (airquality < 13)
 							root["result"][ii]["Quality"] = "Good";
-						else if (airquality < 1100)
-							root["result"][ii]["Quality"] = "Fair";
-						else if (airquality < 1600)
-							root["result"][ii]["Quality"] = "Mediocre";
+						else if (airquality < 35)
+							root["result"][ii]["Quality"] = "Moderate";
+						else if (airquality < 56)
+							root["result"][ii]["Quality"] = "Unhealthy for Sensitive Groups";
+						else if (airquality < 151)
+							root["result"][ii]["Quality"] = "Unhealthy";
+						else if (airquality < 251)
+							root["result"][ii]["Quality"] = "Very Unhealthy";
 						else
-							root["result"][ii]["Quality"] = "Bad";
+							root["result"][ii]["Quality"] = "Hazardous";
 					}
 					else if (dType == pTypeThermostat)
 					{
